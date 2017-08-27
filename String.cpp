@@ -14,14 +14,16 @@ String::String(const char * s)
     this->n = 0;
     while (*(s + n++) != '\0');
 
+    //create new character array and copy over the characters from s
     this->data = new char[n];
     for (int i = 0; i < n; i++) *(this->data + i) = *(s + i);
 }
 
 String::String(const String &o)
 {
+    //Add +1 to accomodate the null character of the passed string
     this->n = o.size() + 1;
-    this->data = new char[n + 1];
+    this->data = new char[n];
     for (int i = 0; i <= n; i++) *(this->data + i) = o.at(i);
 }
 
@@ -34,6 +36,7 @@ void swap(String &first, String &second)
 {
     using std::swap;
 
+    //Use swap for each class property
     swap(first.data, second.data);
     swap(first.n, second.n);
 }
@@ -83,8 +86,10 @@ String & String::operator+=(const String &o)
 
 String & String::operator+=(const char &c)
 {
+    //Add +2 for extra char and trailing null
     char * newBuffer = new char[this->size() + 2];
 
+    //copy over current string to new buffer
     for (int i = 0; i < this->size(); i++)
     {
         *(newBuffer + i) = this->at(i);
@@ -115,9 +120,13 @@ std::ostream &operator<<(std::ostream &os, const String &o)
     return os;
 }
 
+/**
+ * TODO
+ * check for possible memory leaks from this function
+ */
 String & String::substr(int start, int end)
 {
-    String * sub = new String(); 
+    String * sub = new String();
     for (int i = start; i < end; i++)
     {
         *sub += *(this->data + i);
