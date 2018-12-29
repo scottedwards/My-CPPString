@@ -7,17 +7,17 @@ void printStr(String s)
 {
     cout << s.size() << ": ";
     for (int i = 0; i < s.size(); i++) cout << s.at(i);
-    cout << endl << "----------------------------" << endl;
+    cout << endl << "--------------------------------------" << endl;
 }
 
 int main() {
-    cout << "----------------------------" << endl;
+    cout << "--------------------------------------" << endl;
     cout << "Testing Default Constructor" << endl;
     String empty;
     printStr(empty);
 
     cout << "Testing String Literal Constructor" << endl;
-    String daTruth = "Arianne is awesome!";
+    String daTruth = "Strings are awesome!";
     printStr(daTruth);
 
     cout << "Testing Copy Constructor" << endl;
